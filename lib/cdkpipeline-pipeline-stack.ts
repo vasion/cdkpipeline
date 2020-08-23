@@ -2,6 +2,7 @@ import * as codepipeline from "@aws-cdk/aws-codepipeline";
 import * as codepipeline_actions from "@aws-cdk/aws-codepipeline-actions";
 import { Construct, SecretValue, Stack, StackProps } from "@aws-cdk/core";
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
+import { CdkpipelineStage } from "./cdkpipeline-stage";
 
 export class CdkpipelinePipelineStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
@@ -28,5 +29,8 @@ export class CdkpipelinePipelineStack extends Stack {
         });
 
         // Stages
+        pipeline.addApplicationStage(new CdkpipelineStage(this, "PreProd", {
+            env: { account: "471276646031", region: "eu-west-1" }
+        }));
     }
 }
