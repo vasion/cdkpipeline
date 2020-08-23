@@ -11,3 +11,7 @@ test('Empty Stack', () => {
       "Resources": {}
     }, MatchStyle.EXACT))
 });
+
+test("Test", ()=>{
+  expect(1).toBe(1);
+});
